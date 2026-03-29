@@ -3,6 +3,9 @@ import psycopg2
 import os
 
 app = Flask(__name__)
+@app.route("/")
+def home():
+    return "Сайт работает ✅"
 
 def get_conn():
     return psycopg2.connect(os.getenv("DATABASE_URL"))
