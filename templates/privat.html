@@ -1,6 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Privat</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: white;
+}
+
+/* загрузка */
+.loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #333;
+    border-top: 5px solid #00c853;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* основной блок */
+.main {
+    display: none;
+    height: 100vh;
+    background: linear-gradient(180deg, #1b5e20, #2e7d32);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* цена + кнопка */
+.bottom {
+    position: fixed;
+    bottom: 20px;
+    width: 90%;
+    left: 5%;
+    background: #e0e0e0;
+    border-radius: 30px;
+    display: flex;
+    overflow: hidden;
+}
+
+.price {
+    flex: 1;
+    background: #4caf50;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    color: #2e7d32;
+    background: white;
+}
+</style>
+</head>
+
 <body>
-<h2>{{ price }} грн</h2>
+
+<!-- загрузка -->
+<div class="loader" id="loader">
+    <div class="spinner"></div>
+</div>
+
+<!-- основной экран -->
+<div class="main" id="main">
+
+    <!-- тут можно потом вставить картинку -->
+    
+    <div class="bottom">
+        <div class="price">
+            {{ price }} ₴
+        </div>
+        <div class="btn">
+            ОТРИМАТИ
+        </div>
+    </div>
+
+</div>
+
+<script>
+// имитация загрузки
+setTimeout(() => {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("main").style.display = "flex";
+}, 1500);
+</script>
+
 </body>
 </html>
