@@ -8,7 +8,10 @@ def home():
     return "Сайт работает ✅"
 
 def get_conn():
-    return psycopg2.connect(os.getenv("DATABASE_URL"))
+    return psycopg2.connect(
+        os.getenv("DATABASE_URL"),
+        sslmode="require"
+    )
 
 @app.route("/link/<int:link_id>")
 def link_page(link_id):
